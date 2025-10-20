@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>مولد رمز QR — أثر</title>
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/css/qr.css">
+</head>
+<body>
+  <div class="card" role="main">
+    <h1>مولد رمز QR</h1>
+    <p>أدخل النص أو رابط النشاط التجاري لإنشاء رمز QR يمكن مسحه أثناء الزيارة.</p>
+
+    <input id="text" type="text" placeholder="مثال: https://athar.app/merchant/12345" value="Hello world!">
+    <canvas id="qrcode" aria-label="رمز QR"></canvas>
+
+    <div style="display:flex;gap:10px;margin-top:12px">
+      <button id="generate">توليد</button>
+      <button id="download" style="background:#fff;border:1px solid #e1f4ea;color:#0f9d58">تحميل الصورة</button>
+    </div>
+
+    <div class="muted">رمز QR يُولد محليًا في متصفحك — لا يتم إرسال البيانات إلى خوادم خارجية.</div>
+  </div>
+
+  <script type="module">
+    import QRCode from 'https://cdn.skypack.dev/qrcode';
+
+    const canvas = document.getElementById('qrcode');
+    const input = document.getElementById('text');
+    const btn = document.getElementById('generate');
+    const dl = document.getElementById('download');
+
+    async function render(text){
+      try{
+        await QRCode.toCanvas(canvas, text, {width:240, margin:2, color: {dark: '#0b2a1e', light: '#ffffff'}} );
+      }catch(e){
+        console.error(e);
+        alert('حدث خطأ أثناء إنشاء رمز QR');
+      }
+    }
+
+    btn.addEventListener('click', ()=> render(input.value.trim() || ' '));
+    dl.addEventListener('click', ()=>{
+      const url = canvas.toDataURL('image/png');
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'athar-qr.png';
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+    });
+
+    // render default on load
+    render(input.value);
+  </script>
+</body>
+</html>

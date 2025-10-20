@@ -1,0 +1,58 @@
+body {
+  font-family: "Tajawal", sans-serif;
+  background: #f3fff6;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  color: #04311f;
+}
+.card {
+  background: #fff;
+  padding: 22px;
+  border-radius: 16px;
+  box-shadow: 0 12px 30px rgba(8, 53, 24, 0.08);
+  width: min(560px, 93vw);
+  text-align: center;
+}
+h1 {
+  margin: 0 0 10px;
+  font-size: 20px;
+  color: var(--accent, #0f9d58);
+}
+p {
+  color: #6b7280;
+  margin: 0 0 18px;
+}
+#qrcode {
+  width: 240px;
+  height: 240px;
+  border-radius: 12px;
+  background: linear-gradient(180deg, #fff, #f8fff8);
+  display: block;
+  margin: 10px auto 16px;
+  box-shadow: 0 8px 20px rgba(15, 157, 88, 0.06);
+}
+input {
+  width: 100%;
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid #e6f3ea;
+  margin-bottom: 12px;
+  font-size: 15px;
+}
+button {
+  background: linear-gradient(90deg, #0f9d58, #107a5b);
+  color: #fff;
+  padding: 10px 14px;
+  border-radius: 10px;
+  border: 0;
+  font-weight: 700;
+  cursor: pointer;
+}
+.muted {
+  color: #8b98a0;
+  font-size: 13px;
+  margin-top: 12px;
+}
